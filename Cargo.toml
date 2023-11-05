@@ -1,0 +1,9 @@
+[package]
+name = "facade_r"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+serde_yaml = "0.9.25"
+serde = { version = "1.0.190", features = ["derive"] }
+walkdir = "2.4.0"
