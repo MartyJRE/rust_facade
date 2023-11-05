@@ -7,3 +7,9 @@ edition = "2021"
 serde_yaml = "0.9.25"
 serde = { version = "1.0.190", features = ["derive"] }
 walkdir = "2.4.0"
+hyper = { version = "0.14.27", features = ["full"] }
+tokio = { version = "1.33.0", features = ["full"] }
+http-body-util = "0.1.0-rc.3"
+hyper-util = { git = "https://github.com/hyperium/hyper-util.git" }
+tracing-subscriber = { version = "0.3.16", features = ["json"] }
+log = "0.4.20"
