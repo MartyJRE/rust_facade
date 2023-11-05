@@ -1,5 +1,6 @@
 use crate::policy::{
-    BetterInvoke, ErrorMessageHandling, If, Javascript, ResponseHandler, SetEnvironment,
+    BetterInvoke, ErrorMessageHandling, If, Javascript, OperationSwitch, ResponseHandler,
+    SetEnvironment,
 };
 use serde::Deserialize;
 use serde_yaml::Value;
@@ -78,25 +79,6 @@ pub struct Method {
     pub summary: Option<String>,
     pub description: Option<String>,
     pub responses: Option<HashMap<u16, Response>>,
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct Operation {
-    pub path: String,
-    pub verb: String,
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct OperationSwitchCase {
-    pub operations: Vec<Operation>,
-    pub execute: Vec<Policy>,
-}
-
-#[derive(Deserialize, Debug, Clone)]
-pub struct OperationSwitch {
-    pub title: String,
-    #[serde(rename = "case")]
-    pub cases: Vec<OperationSwitchCase>,
 }
 
 #[derive(Deserialize, Debug, Clone)]

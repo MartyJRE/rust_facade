@@ -3,12 +3,6 @@ use serde::Deserialize;
 use std::collections::HashMap;
 
 #[derive(Deserialize, Debug, Clone)]
-pub struct If {
-    condition: String,
-    execute: Vec<Policy>,
-}
-
-#[derive(Deserialize, Debug, Clone)]
 pub struct SetEnvironment {
     description: String,
 }
@@ -42,6 +36,25 @@ pub struct ResponseHandler {
 }
 
 #[derive(Deserialize, Debug, Clone)]
+pub struct Operation {
+    pub path: String,
+    pub verb: String,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct OperationSwitchCase {
+    pub operations: Vec<Operation>,
+    pub execute: Vec<Policy>,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct OperationSwitch {
+    pub title: String,
+    #[serde(rename = "case")]
+    pub cases: Vec<OperationSwitchCase>,
+}
+
+#[derive(Deserialize, Debug, Clone)]
 pub struct ErrorMessageHandling {
     description: String,
 }
@@ -50,4 +63,10 @@ pub struct ErrorMessageHandling {
 pub struct Javascript {
     title: String,
     source: String,
+}
+
+#[derive(Deserialize, Debug, Clone)]
+pub struct If {
+    condition: String,
+    execute: Vec<Policy>,
 }
